@@ -22,8 +22,8 @@
             <th scope="col">Nama</th>
             <th scope="col">Status</th>
             <th scope="col">Bidang</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Kelurahan</th>
+            {{-- <th scope="col">Alamat</th>
+            <th scope="col">Kelurahan</th> --}}
             <th scope="col">Kecamatan</th>
             <th width="280px">Action</th>
         </tr>
@@ -33,8 +33,8 @@
             <td>{{ $sekolah->nama }}</td>
             <td>{{ $sekolah->status }}</td>
             <td>{{ $sekolah->bidang }}</td>
-            <td>{{ $sekolah->alamat }}</td>
-            <td>{{ $sekolah->kelurahan }}</td>
+            {{-- <td>{{ $sekolah->alamat }}</td>
+            <td>{{ $sekolah->kelurahan }}</td> --}}
             <td>{{ $sekolah->kecamatan }}</td>
             <td>
                 <form action="{{ route('sekolah.destroy',$sekolah->id) }}" method="POST">
