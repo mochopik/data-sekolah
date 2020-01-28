@@ -18,8 +18,8 @@ class CreateSekolahsTable extends Migration
             $table->string('nama');
             $table->string('status')->default('Negeri', 'Swasta');
             $table->string('bidang')->default('SD', 'SMP', 'SMA', 'SMK', 'SLB');
-            $table->string('alamat');
-            $table->string('kelurahan');
+            $table->string('alamat')->nullable();
+            $table->string('kelurahan')->nullable();
             $table->string('kecamatan');
             $table->timestamps(); 
         });

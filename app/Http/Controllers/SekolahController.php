@@ -61,8 +61,6 @@ class SekolahController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'alamat' => 'required',
-            'kelurahan' => 'required',
             'kecamatan' => 'required'
         ]);
 
@@ -105,8 +103,6 @@ class SekolahController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'alamat' => 'required',
-            'kelurahan' => 'required',
             'kecamatan' => 'required'
         ]);
 
