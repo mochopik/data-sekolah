@@ -4,43 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Sekolah;
 use App\Charts\SekolahChart;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SekolahController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Menampilkan data sekolah per Kecamatan
      *
      * @return \Illuminate\Http\Response
      */
     public function indexChart()
     {
-        // $sekolah = Sekolah::all()
-        //     ->groupBy('kecamatan')
-        //     ->map(function ($nama, $kec) {
-        //         return [
-        //             'type' => $kec,
-        //             'records' => $nama->count(),
-        //             'data' => $nama->pluck('nama')
-        //         ];
-        //     })
-        //     ->values();
         $sekolah = DB::table('sekolahs')
                  ->select('kecamatan', DB::raw('count(*) as jml'))
                  ->groupBy('kecamatan')
-                 ->get();
-        // dd($sekolah);
+                 ->get()
+                 ->pluck('jml', 'kecamatan');
 
         $charts = new SekolahChart;
         $charts->labels($sekolah->keys());
-        $charts->dataset('My dataset', 'line', $sekolah->values());
-        dd($charts); 
+        $charts->dataset('Data Sekolah', 'line', $sekolah->values());
         return view('chart', compact('sekolah', 'charts'));
     }
 
     /**
-     * Display a listing of the resource.
+     * Menampilkan Data sekolah
      *
      * @return \Illuminate\Http\Response
      */
@@ -53,7 +42,7 @@ class SekolahController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Menampilkan form untuk input sekolah
      *
      * @return \Illuminate\Http\Response
      */
@@ -63,7 +52,7 @@ class SekolahController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Menyimpan data sekolah
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -84,9 +73,9 @@ class SekolahController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Menampilkan data sekolah secara spesifik
      *
-     * @param  \App\Product  $product
+     * @param  \App\Sekolah  $sekolah
      * @return \Illuminate\Http\Response
      */
     public function show(Sekolah $sekolah)
@@ -95,9 +84,9 @@ class SekolahController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Menampilkan form edit sekolah
      *
-     * @param  \App\Product  $product
+     * @param  \App\Sekolah  $sekolah
      * @return \Illuminate\Http\Response
      */
     public function edit(Sekolah $sekolah)
@@ -106,10 +95,10 @@ class SekolahController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update data sekolah
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
+     * @param  \App\Sekolah $sekolah
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Sekolah $sekolah)
@@ -128,9 +117,9 @@ class SekolahController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Menghapus data sekolah
      *
-     * @param  \App\Product  $product
+     * @param  \App\Sekolah $sekolah
      * @return \Illuminate\Http\Response
      */
     public function destroy(Sekolah $sekolah)
