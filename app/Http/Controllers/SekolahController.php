@@ -35,10 +35,10 @@ class SekolahController extends Controller
      */
     public function index()
     {
-        $sekolahs = Sekolah::latest()->paginate(5);
+        $sekolahs = Sekolah::latest()->paginate(20);
 
         return view('sekolah.index', compact('sekolahs'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     /**
