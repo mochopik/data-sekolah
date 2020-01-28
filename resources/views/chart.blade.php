@@ -5,7 +5,7 @@
 <div class="container">
   <div class="card mt-5">
       <div class="card-header bg-info text-white">Graphs</div> 
-      <div class="card-body" style="width: 50%">
+      <div class="card-body">
         {!! $charts->container() !!} 
       </div>
   </div>

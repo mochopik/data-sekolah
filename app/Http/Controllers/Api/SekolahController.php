@@ -21,7 +21,7 @@ class SekolahController extends Controller
 
     public function index()
     {
-        $sekolah = auth()->user()->sekolahs;
+        $sekolah = Sekolah::all();
  
         return response()->json([
             'success' => true,
@@ -31,7 +31,7 @@ class SekolahController extends Controller
  
     public function show($id)
     {
-        $sekolah = auth()->user()->sekolahs()->find($id);
+        $sekolah = Sekolah::all()->find($id);
  
         if (!$sekolah) {
             return response()->json([
@@ -63,7 +63,7 @@ class SekolahController extends Controller
         $sekolah->kelurahan = $request->kelurahan;
         $sekolah->kecamatan = $request->kecamatan;
  
-        if (auth()->user()->sekolahs()->save($sekolah))
+        if ($sekolah)
             return response()->json([
                 'success' => true,
                 'data' => $sekolah->toArray()
@@ -77,7 +77,7 @@ class SekolahController extends Controller
  
     public function update(Request $request, $id)
     {
-        $sekolah = auth()->user()->sekolahs()->find($id);
+        $sekolah = Sekolah::all()->find($id);
  
         if (!$sekolah) {
             return response()->json([
@@ -101,7 +101,7 @@ class SekolahController extends Controller
  
     public function destroy($id)
     {
-        $sekolah = auth()->user()->sekolahs()->find($id);
+        $sekolah = Sekolah::all()->find($id);
  
         if (!$sekolah) {
             return response()->json([
