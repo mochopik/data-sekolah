@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-info text-white">
     <div class="container">
         <a class="navbar-brand text-white" href="{{ url('/sekolah') }}">
-            {{ config('app.name', 'Sekolah') }}
+            Data Sekolah Kabupaten Bandung
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
